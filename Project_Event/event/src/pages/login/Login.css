@@ -1,0 +1,74 @@
+.main-login {
+    display: flex;
+    height: 100vh;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .login-direito {
+    flex: 1;
+    background-color: #864551; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .imagem img {
+    max-width: 300px;
+  }
+  
+  .login-right {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-event {
+    margin-bottom: 30px;
+    width: 150px;
+  }
+  
+  .form_login {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .campos_login input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .Senha-esquecida {
+    align-self: flex-end;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #999;
+    text-decoration: none;
+  }
+  
+  .Senha-esquecida:hover {
+    text-decoration: underline;
+  }
+    
+    
+    /* RESPONSIVIDADE */
+     
+    /* me de algumas caracteristicas a partir de um tamanho de tela */
+    @media screen and (max-width: 768px ){
+        /* 0px -> 768px */
+    
+        .banner{
+            display: none;
+        }
+        
+    }
