@@ -1,0 +1,72 @@
+.mae_de_todas{
+    display: flex;
+    height: 100vh;
+}
+    
+.banner{
+  flex: 1;
+  display: flex;
+  background-color: #CC3F55;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.section_login{
+    flex: 1;
+    display: flex;
+  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.campo_imput{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 17%;
+}
+.campos_login{
+    height: 57% ;
+}   
+
+.campo_imput input{
+ border-top: none;
+ border-left: none;
+ border-right: none;
+ width: 350px;
+
+ outline: none;
+}
+.email {
+    padding-top: 50px;
+}
+.mudar_senha {
+    color: gray;
+    font-size: 13px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+}
+
+.form_login {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    place-items: center;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    /*0px -> 768px*/
+    .banner  {
+        display: none;
+    }
+    .campo_imput input{
+        width: 200px;
+    }
+    
+}

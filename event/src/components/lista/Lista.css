@@ -1,0 +1,142 @@
+.listagem{
+    background-color: #b51d44;
+    min-height: calc(100vh - (75px + 399px + 40px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+}
+
+
+
+
+
+.linha_titulo{
+   max-width: 120px;
+   width: 100%;
+   border-style: solid;
+   border-width: 1px;
+   border-color: white;
+   margin-top: 5px;
+   margin-bottom: 20px;
+}
+
+
+.item_lista img{
+    height: 15px;
+}
+
+.tabela{
+    width: 57%;
+    margin-top: 30px;
+}
+
+
+.tabela table{
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+
+.tabela .table_cabecalho :first-child{
+    width: 100px;
+
+}
+
+
+.tabela .table_cabecalho :nth-child(2){
+    width: 150px;
+}
+
+.tabela .table_cabecalho th{
+    width: 100px;   
+}
+.right{
+    text-align: right;
+
+}
+.left{
+    text-align: left;
+    padding-left: 10px;
+
+}
+
+
+.item_lista td{
+    /* desgrudar o item do titulo */
+    padding: 20px 12px 10px 7px ;
+    color: black;
+}
+
+.item_lista{
+    text-align: center;
+    border-bottom:  solid 1px #73061B20;
+
+}
+
+.listagem h1{
+    color: black;
+    font-size: smaller;
+}
+
+.tabela_cabecalho th{
+    color: black;
+    font-size: small;
+    padding-bottom: 5px;
+
+}
+
+.tabela_cabecalho{
+    border-bottom: black 1px solid;
+}
+
+.item_lista {
+    border-bottom: black 1px solid;
+    
+}
+
+
+
+/* .divi{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff84;
+    margin-top: 5px;
+    border-collapse: collapse;
+} */
+
+@media screen and (max-width: 768px){
+
+    .tabela thead{
+        display: none;
+    }
+
+
+    .item_lista td{
+        display: grid;
+        text-align: left;
+        padding: 10px 10px 10px 0;
+        grid-template-columns: 10ch auto;
+
+    }
+
+
+    .item_lista td::before{
+        content: attr(data-cell) ":";
+        font-weight: 700;
+        width: 80px;
+        text-align: left;
+    }
+
+    .item_lista td:last-child{
+        margin-bottom: 24px;
+    }
+
+    .item_lista td:first-child{
+        margin-top: 24px;
+    }
+
+
+}
+
