@@ -1,11 +1,11 @@
-import "./Footer.css"
-
-const Footer = () => {
-    return (
+import "./Footer.css";
+const Footer = () =>{
+    return(
         <footer>
-            <p>Escola Senai de Informática - 2025</p>
+            <p>Escola Senai de Informática 2023</p>
         </footer>
-    )
-}
 
+    )
+
+}
 export default Footer;
