@@ -1,0 +1,60 @@
+header {
+    background-color: white;
+    height: 75px;
+    box-shadow: 1px 4px 4px 0px #00000053;
+    position: relative;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.cabecalho img {
+    height: 25px;
+}
+
+.link_header {
+    margin-left: 45px;
+    margin-right: 20px;
+
+    color: #201849;
+
+    text-decoration: none;
+}
+
+.botao_home {
+    width: 110px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    background-color: #B51D44;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.Adm img {
+    width: 15px;
+    height: 13px;
+    margin-left: 10px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    /* 0pc ate 768 */
+    .cabecalho img {
+        height: 35px;
+
+
+        .link_header {
+            margin-left: 10px;
+        }
+
+    }
+}
