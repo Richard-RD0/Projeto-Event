@@ -55,6 +55,7 @@
 .tabela{
     width: 100%;
     margin-top: 30px;
+    color: white;
 
 }
 
@@ -65,22 +66,23 @@
     
 }
 
-.tabela .table_cabecalho :first-child {
+.tabela_cabecalho :first-child {
     width: 300px;
-    
 }
 
-.tabela .table_cabecalho :nth-child(2) {
-    /* width: 750px; */
-    text-align: start;
+.tabela_cabecalho :nth-child(2) {
+    width: 200px;
 }
 
-.tabela .table_cabecalho th {
-    border-bottom: 1px solid white;
-    width: 600px;
-    margin-top: 40px;
-    
+.tabela_cabecalho :nth-child(3) {
+    width: 200px;
 }
+
+.tabela_cabecalho th {
+    width: 100px;
+    font-weight: 500;
+}
+
 
 
 .item_lista td{
