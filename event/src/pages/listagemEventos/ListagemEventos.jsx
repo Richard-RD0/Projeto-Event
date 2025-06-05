@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import api from "../../services/Services";
 
 import "./ListagemEventos.css"
+
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+
 import Comentario from "../../assets/img/Comentario.svg"
+import Informacao from "../../assets/img/Informacao.svg"
 import Toggle from "../../components/toggle/Toggle";
 
-const ListagemEventos = (props) => {
+const ListagemEventos = () => {
     const [listaEventos, setListaEventos] = useState([]);
 
     async function listarEventos() {
@@ -46,22 +49,45 @@ const ListagemEventos = (props) => {
 
                     <div className="list">
                         <table>
-                            <tr className="list_tabela">
-                                <th>Titulo</th>
-                                <th>Tipo Evento</th>
-                                <th>Comentários</th>
-                                <th>Participar</th>
-                            </tr>
+                            <thead>
+                                <tr className="list_tabela">
+                                    <th>Titulo</th>
+                                    <th>Data do Evento</th>
+                                    <th>Tipo Evento</th>
+                                    <th>Descrição</th>
+                                    <th>Comentários</th>
+                                    <th>Participar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {listaEventos.length > 0 ? (
+                                    listaEventos.map((item) => (
+                                        <tr className="list_presenca">
+                                            <td data-cell="Titulo">{item.nomeEvento}</td>
+                                            <td data-cell="Data do Evento">{new Date(item.dataEvento).toLocaleDateString('pt-BR')}</td>
+                                            <td data-cell="Tipo Evento">{item.tiposEvento.tituloTipoEvento}</td>
 
-                            <tr className="list_presenca">
-                                <td data-cell="Titulo">xxxxxxxx</td>
+                                            <td data-cell="Descricao">
+                                                <img src={Informacao}
+                                                    alt="Exclamação de Descrição"
+                                                />
+                                            </td>
 
-                                <td data-cell="Tipo Evento">xxxxxxxx</td>
+                                            <td data-cell="Comentario">
+                                                <img src={Comentario}
+                                                    alt="Comentário"
+                                                />
+                                            </td>
 
-                                <td data-cell="Comentario"><img src={Comentario} alt="Comentário" /></td>
-
-                                <td data-cell="Presenca"><Toggle /></td>
-                            </tr>
+                                            <td data-cell="Presenca"><Toggle /></td>
+                                        </tr>
+                                    ))
+                                ) :
+                                    (
+                                        <p>Nenhum evento encontrado</p>
+                                    )
+                                }
+                            </tbody>
                         </table>
                     </div>
                 </section>

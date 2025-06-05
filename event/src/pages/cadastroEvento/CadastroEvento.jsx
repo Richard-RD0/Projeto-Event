@@ -7,6 +7,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Lista from "../../components/lista/Lista";
 import Swal from "sweetalert2";
+import { Modal } from "../../components/modal/Modal";
 
 const CadastroEvento = () => {
     const [listaEvento, setListaEvento] = useState([]);
@@ -167,12 +168,11 @@ const CadastroEvento = () => {
                     setDescricao(element.descricao);
                 }
             });
-            console.log(descricao);
-
             Swal.fire(descricao);
             Swal.fire({
                 title: "Descrição Evento",
                 text: descricao,
+                icon: "success"
             });
         } catch (error) {
             console.log(error);
@@ -237,6 +237,8 @@ const CadastroEvento = () => {
                 />
             </main>
             <Footer />
+
+            <Modal />
         </>
     )
 }

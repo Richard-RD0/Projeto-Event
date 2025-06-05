@@ -46,7 +46,7 @@ td {
 td,
 th,
 td {
-    text-align: start;
+    /* text-align: start;   */
     margin-top: 20px;
 }
 
@@ -65,19 +65,20 @@ td {
 
 .list_presenca {
     border: 1px solid #201849;
+    text-align: center;
     border-top: none;
     border-left: none;
     border-right: none;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
 
-    .list thead{
+    .list thead {
         display: none;
     }
 
 
-    .list td{
+    .list td {
         display: grid;
         text-align: left;
         padding: 10px 10px 10px 0;
@@ -86,18 +87,18 @@ td {
     }
 
 
-    .list td::before{
+    .list td::before {
         content: attr(data-cell) ":";
         font-weight: 700;
         width: 80px;
         text-align: left;
     }
 
-    .list td:last-child{
+    .list td:last-child {
         margin-bottom: 24px;
     }
 
-    .list td:first-child{
+    .list td:first-child {
         margin-top: 24px;
     }
 
@@ -106,7 +107,7 @@ td {
         margin-left: 30px;
     }
 
-    .list_tabela{
+    .list_tabela {
         display: none;
     }
 

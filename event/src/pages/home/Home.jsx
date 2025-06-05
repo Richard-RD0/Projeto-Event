@@ -25,37 +25,37 @@ const Home = () => {
                         </div>
 
                         <div className="lista_eventos layout_grid">
-                            <div className="item">
+                            <article className="item">
                                 <h1>Titulo do Evento</h1>
 
                                 <p>Breve descrição do evento, pode ser um paragrafo pequeno</p>
 
                                 <button>Conectar</button>
-                            </div>
+                            </article>
 
-                            <div className="item">
+                            <article className="item">
                                 <h1>Titulo do Evento</h1>
 
                                 <p>Breve descrição do evento, pode ser um paragrafo pequeno</p>
 
                                 <button>Conectar</button>
-                            </div>
+                            </article>
 
-                            <div className="item">
+                            <article className="item">
                                 <h1>Titulo do Evento</h1>
 
                                 <p>Breve descrição do evento, pode ser um paragrafo pequeno</p>
 
                                 <button>Conectar</button>
-                            </div>
+                            </article>
 
-                            <div className="item">
+                            <article className="item">
                                 <h1>Titulo do Evento</h1>
 
                                 <p>Breve descrição do evento, pode ser um paragrafo pequeno</p>
 
                                 <button>Conectar</button>
-                            </div>
+                            </article>
                         </div>
                     </div>
 
