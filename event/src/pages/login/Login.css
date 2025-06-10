@@ -1,89 +1,76 @@
-/* A mãe de todos: */
-.main_login{
+.main_login {
     display: flex;
     height: 100vh;
-    background-color: #cc3f55;
-
 }
 
-/* Banner da esquerda: */
-.banner{
-    background-image: url("../../assets/img/undraw_login_re_4vu2\ 1.png");
-    flex: 1;
+.banner {
+    background-color: #B51D44;
 
-    /* Modificar algumas caracteristicas de imagem */
+    width: 50%;
+
+    background-image: url("../../assets/img/fundoLogin.svg");
     background-position: center;
-    background-size: 400px;
     background-repeat: no-repeat;
-    
 }
 
-/* Form de login da direita: */
-.section_login{
+.section_login {
     flex: 1;
-
-    background-color: white;
-
-    /* Centraliza o campo */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.form_login{
-   color: white;
-    width: 70%;
-    height: 40%;
+.form_login {
+    color: black;
+
+    height: 50%;
+    width: 49%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
 }
 
-.form_login h1{
-    /* Vai deixar o titulo com letras */
-    text-transform: uppercase;
+.form_login a {
+    text-decoration: none;
+    color:#A6A0A0;
+    font-size: 12px;
 }
 
-.campo_input{
+.campos_login {
+    width: 100%;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
-    border-top: none;
-    border-left:none;
-    border-right: none;
-    border-bottom: 1px solid black;
+    align-items: center;
 }
-.campos_login{
+
+.campo_input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 100%;
 }
 
-.campo_input input{
-    height: 30px;
-    padding: 0px 10px;
-    margin-top: 7px;
+.campo_input input {
+    height: 28px;
+    padding: 0 10px;
 
-    border: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     outline: none;
-    border-radius: 7px;
-    
 }
 
-/* Responsividade 😉😒 */
-
-/* Me de algumas caracteristicas a partir de um tamanho de tela */
-
-@media screen and (max-width: 768px){
-    /* 0px -> 768px */
+@media screen and (max-width: 768px) {
     .banner{
-        display: none;
+        display: none;  
+    }
+
+    .section_login img {
+        width: 247px;
+        height: 47px;
     }
 }
-
-.main_login a{
-    text-decoration: none;
-    color: grey;
-}
-
-
