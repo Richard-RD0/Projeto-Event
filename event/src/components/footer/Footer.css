@@ -1,0 +1,16 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    height: 40px;
+    border-top: solid black 1px;
+}
+
+@media screen and (max-width: 768px){
+    footer {
+        height: 39px;
+        font-size: 14px;
+    }
+}
