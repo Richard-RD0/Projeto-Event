@@ -1,35 +1,36 @@
 import "./Header.css";
-import Logo from "../../assets/img/Logo.svg";
-import Icone from "../../assets/img/Administracao.svg";
+import Logo from "../../assets/img/logo1.svg";
 import { Link } from "react-router-dom";
+import Vector from "../../assets/img/Vector.png";
 
 const Header = (props) => {
-    return (
+    return(
         <header>
             <div className="layout_grid cabecalho">
-                <Link to="/" className="logo_header">
-                    <img src={Logo} alt="Logo do Events" />
-                </Link>
+                {/* Ao clicar no link, redireciona na tela login */}
+            <Link to="/">
+                <img src= {Logo} alt="Logo do EventPlus"/>
+            </Link>
 
-                <nav className="nav_header">
-                    <Link href="" className="link_header" to="/Home">Home</Link>
-                    <Link href="" className="link_header" to="/Evento">Eventos</Link>
-                    <Link href="" className="link_header" to="/TipoEvento">TpEvento</Link>
-                    <Link href="" className="link_header" to="/TipoUsuario">Usuários</Link>
-                    <Link href="" className="link_header" to="/Listagem">Listagem</Link>
-                </nav>
+            <nav className="nav_header">
+                {/* <a href="" className="link_header">Home</a>
+                <a href="" className="link_header">Evento</a>
+                <a href="" className="link_header">Usuario</a>
+                <a href="" className="link_header">Contatos</a> */}
 
-                <nav className="nav_img" style={{ display: props.visibilidade }}>
-                    <Link href="" className="link_header" to="/" >{props.user}</Link>
-                    <img src={Icone} alt="Icone" style={{ display: props.visibilidade }} />
-                </nav>
-
-                <div className="login" style={{ display: props.botao_logar }}>
-                    <Link href="" to="/" className="logar">Logar</Link>
-                </div>
-            </div>
-        </header>
+                <Link className="link_header" to="/Home">Home</Link>
+                <Link className="link_header" to="/Evento">Eventos</Link>
+                <Link className="link_header" to="/Usuario">Usuarios</Link>
+                <Link className="link_header" to="/Contatos">Contatos</Link>
+            </nav>
+                    <div className="adm">
+                    <a href="#">{props.tituloHeader}<img src= {Vector} alt="portinha"/></a>
+                    </div>
+        </div>
+    </header>
+   
     )
 }
+
 
 export default Header;

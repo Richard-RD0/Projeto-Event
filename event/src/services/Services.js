@@ -2,10 +2,10 @@ import axios from "axios";
 
 const apiPorta = "5289";
 
-const apiLocal = `http://localhost:${apiPorta}/api/`;
+const apilocal = `http://localhost:${apiPorta}/api/`
 
 const api = axios.create({
-    baseURL: apiLocal
+    baseURL: apilocal
 });
 
 export default api;

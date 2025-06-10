@@ -1,40 +1,69 @@
-.listagem {
-    background-color: #b51d44;
-    min-height: calc(100vh - (75px + 399px + 40px));
+.listagem{
+    /* vamos retirar
+        header 
+        cadastro
+        footer */
+   
+    min-height: calc(100vh - (75px + 252px + 40px));
+
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
+
+    background-color:#B51D44 ;
+
     padding: 40px 0;
+    margin-top: 150px;
+    max-width: 100%;
+    
 }
 
-.listagem h1 {
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.linha_titulo {
-    max-width: 150px;
+.listagem hr {
+    max-width: 300px;
     width: 100%;
     border-style: solid;
     border-width: 1px;
-    border-color: white;
+    border-color: #73061B;
     margin-top: 5px;
-    margin-bottom: 20px;
 }
 
-.item_lista img {
-    height: 15px;
+
+.listagem h1{
+    text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+
+    font-family: 'Poppins', 20px;
+    
 }
 
-.tabela {
+.listagem hr{
+    max-width: 300px;
+    width: 10%;
+    margin-top: 5px;
+
+    border-color: white;
+    border-top: 2px solid white;
+}
+
+.item_lista img{
+    height: 20px;
+    
+    
+}
+
+.tabela{
     width: 100%;
     margin-top: 30px;
+    color: white;
+
 }
 
-.tabela table {
-    width: 100%;
-    border-collapse: collapse;
+.tabela table{
+   width: 65%;
+   margin-left: 350px;
+   border-collapse: collapse;
+    
 }
 
 .tabela_cabecalho :first-child {
@@ -54,67 +83,60 @@
     font-weight: 500;
 }
 
-.item_lista td {
-    padding: 20px 0 10px 0;
+
+
+.item_lista td{
+    padding: 20px 0 5px 0;
+
     color: white;
 }
 
-.item_lista {
+.item_lista{
     text-align: center;
-    border-bottom: solid 1px #73061B20;
-    justify-content: flex-start;
+    
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
 }
 
-.item_lista td {
-    font-weight: 400;
+.cabecalho_tabela{
+    height: 40px;
+   
 }
 
-.tabela_cabecalho th {
-    color: white;
-    font-size: small;
-    padding-bottom: 5px;
-}
-
-.tabela_cabecalho {
-    border-bottom: white 1px solid;
-}
-
-.item_lista {
-    border-bottom: white 1px solid;
-}
-
-@media screen and (max-width: 768px) {
-
-    .tabela thead {
+@media screen and (max-width: 768px){
+    /* 1px - 768px */
+    .tabela thead{
         display: none;
     }
 
-
-    .item_lista td {
+    /* Um elemento abaixo do outro: */
+    .item_lista td{
         display: grid;
         text-align: left;
         padding: 10px 10px 10px 0;
         grid-template-columns: 10ch auto;
-
     }
 
-
-    .item_lista td::before {
+    .item_lista td::before{
+          /* Adiciona o data-cell do html e coloca os : depois */
         content: attr(data-cell) ":";
-        font-weight: 600;
+        font-weight: 700;
         width: 80px;
         text-align: left;
     }
 
-    .item_lista td:last-child {
+    .item_lista td:last-child{
         margin-bottom: 24px;
     }
 
-    .item_lista td:first-child {
+    .item_lista td:first-child{
         margin-top: 24px;
     }
 }
 
-.botao_edicao img{
-    cursor: pointer;
-}
+    .tabela p{
+        color: white;
+    }
+
+
+
