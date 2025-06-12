@@ -15,6 +15,8 @@ import Toggle from "../../components/toggle/Toggle";
 const ListagemEventos = (props) => {
     const [listaEventos, setListaEventos] = useState([]);
 
+    const [filtro, setFiltro] = useState(["todos"])
+
     //Modal:
     const [tipoModal, setTipoModal] = useState("");     //"descricaoevento" ou "comentario"
     const [dadosModal, setDadosModal] = useState({});   // descrição, idEvento, etc.
@@ -82,56 +84,35 @@ const ListagemEventos = (props) => {
 
     async function manipularPresenca(idEvento, presenca, idPresenca) {
         try {
-            if (presenca === true && idPresenca) {
-                //Atualização: situação para FALSE
-                await api.put(`PresencasEventos/${idPresenca}`, { situacao: false })
-                alertar("success", "Sua presença foi removida")
-
-            } else if (idPresenca === false && idPresenca) {
-                //Atualização: situação para TRUE
-                await api.put(`PresencasEventos/${idPresenca}`, { situacao: true })
-                alertar("success", "Sua presença foi confirmada.")
-
+            if (presenca && idPresenca != "") {
+                //atualizacao: situacao para FALSE
+                await api.put(`PresencasEventos/${idPresenca}`, { situacao: false });
+                Swal.fire('Removido!', 'Sua presença foi removida.', 'success');
+            } else if (idPresenca != "") {
+                //atualizacao: situacao para TRUE
+                await api.put(`PresencasEventos/${idPresenca}`, { situacao: true });
+                Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success');
             } else {
-                //Cadastrar uma nova presenca
-                await api.post("PresencasEventos",
-                    {
-                        situacao: true,
-                        idUsuario: usuarioId,
-                        idEvento: idEvento
-                    });
-                alertar("success", "Sua presença foi confirmada.")
+                //cadastrar uma nova presenca
+                await api.post("PresencasEventos", { situacao: true, idUsuario: usuarioId, idEvento: idEvento });
+                Swal.fire('Confirmado!', 'Sua presença foi confirmada.', 'success');
             }
-            listarEventos();
+            listarEventos()
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     }
 
     function filtrarEventos() {
         const hoje = new Date();
-
         return listaEventos.filter(evento => {
             const dataEvento = new Date(evento.dataEvento);
 
-            if (filtroData.includes("todos")) return true;
-            if (filtroData.includes("futuros") && dataEvento > hoje) return true;
-            if (filtroData.includes("passados") && dataEvento < hoje) return true;
-
+            if (filtro.includes("todos")) return true;
+            if (filtro.includes("futuros") && dataEvento > hoje) return true;
+            if (filtro.includes("passados") && dataEvento < hoje) return true;
             return false;
-        });
-    }
-
-    async function cadastrarComentario(comentario) {
-        try {
-            await api.post("ComentariosEventos", {
-                idUsuario: usuarioId,
-                idEvento: props.idEvento,
-                descricao: Comentario
-            })
-        } catch (error) {
-            console.log(error);
-        }
+        })
     }
 
     useEffect(() => {
@@ -152,71 +133,66 @@ const ListagemEventos = (props) => {
                     </div>
 
                     <div className="listagem_eventos">
-                        <select name="eventos" onChange={(e) => setFiltroData([e.target.value])}
+                        <select name="eventos"
+                            value={props.valorSelect}
+                            onChange={(e) => setFiltro(e.target.value)}
                         >
-                            <option value="todos" disabled selected>Todos os Eventos</option>
-                            <option value="futuros">Somente Futuros</option>
-                            <option value="passados">Somente Passados</option>
+                            <option value="todos" selected>Todos os Eventos</option>
+                            <option value="futuros" selected>Somente Futuros</option>
+                            <option value="passados" selected>Somente Passados</option>
                         </select>
                     </div>
 
                     <div className="list">
-                        {listaEventos.length > 0 ? (
-                            filtrarEventos() && filtrarEventos().map((item) =>
-                                <table>
-                                    <thead>
-                                        <tr className="list_tabela">
-                                            <th>Titulo</th>
-                                            <th>Data do Evento</th>
-                                            <th>Tipo Evento</th>
-                                            <th>Descrição</th>
-                                            <th>Comentários</th>
-                                            <th>Participar</th>
-                                        </tr>
-                                    </thead>
+                        <table>
+                            <thead>
+                                <tr className="list_tabela">
+                                    <th>Titulo</th>
+                                    <th>Data do Evento</th>
+                                    <th>Tipo Evento</th>
+                                    <th>Descrição</th>
+                                    <th>Comentários</th>
+                                    <th>Participar</th>
+                                </tr>
+                            </thead>
+
+
+                            {listaEventos.length > 0 ? (
+                                filtrarEventos() && filtrarEventos().map((item) =>
                                     <tbody>
-                                        {listaEventos.length > 0 ? (
-                                            listaEventos.map((item) => (
-                                                <tr className="list_presenca">
-                                                    <td data-cell="Titulo">{item.nomeEvento}</td>
-                                                    <td data-cell="Data do Evento">{new Date(item.dataEvento).toLocaleDateString('pt-BR')}</td>
-                                                    <td data-cell="Tipo Evento">{item.tiposEvento.tituloTipoEvento}</td>
+                                        <tr className="list_presenca">
+                                            <td data-cell="Titulo">{item.nomeEvento}</td>
+                                            <td data-cell="Data do Evento">{new Date(item.dataEvento).toLocaleDateString('pt-BR')}</td>
+                                            <td data-cell="Tipo Evento">{item.tiposEvento.tituloTipoEvento}</td>
 
-                                                    <td data-cell="Descricao">
-                                                        <img src={Informacao}
-                                                            alt="Exclamação de Descrição"
-                                                            onClick={() => abrirModal("descricaoEvento", { descricao: item.descricao })}
-                                                        />
-                                                    </td>
+                                            <td data-cell="Descricao">
+                                                <img src={Informacao}
+                                                    alt="Exclamação de Descrição"
+                                                    onClick={() => abrirModal("descricaoEvento", { descricao: item.descricao })}
+                                                />
+                                            </td>
 
-                                                    <td data-cell="Comentario">
-                                                        <img src={Comentario}
-                                                            alt="Comentário"
-                                                            onClick={() => abrirModal("comentarios", { idEvento: item.idEvento })}
-                                                        />
-                                                    </td>
+                                            <td data-cell="Comentario" >
+                                                <img src={Comentario}
+                                                    alt="Comentário"
+                                                    onClick={() => abrirModal("comentarios", { idEvento: item.idEvento })}
+                                                />
+                                            </td>
 
-                                                    <td data-cell="Presenca">
-                                                        <Toggle
-                                                            presenca={item.possuiPresenca}
-                                                            manipular={() => manipularPresenca(item.idEvento, item.possuiPresenca, item.idPresenca)
-                                                            }
-                                                        />
-                                                    </td>
-                                                </tr>
-                                            ))
-                                        ) :
-                                            (
-                                                <p>Nenhum evento encontrado</p>
-                                            )
-                                        }
+                                            <td data-cell="botao">
+                                                <Toggle
+                                                    presenca={item.possuiPresenca}
+                                                    onChange={() => manipularPresenca(item.idEvento, item.possuiPresenca, item.iddPresencaEvento)}
+                                                />
+                                            </td>
+                                        </tr>
                                     </tbody>
-                                </table>
+                                )
+                            ) : (
+                                <p>erro</p>
                             )
-                        ) : (
-                            <p>erro</p>
-                        )
-                        }
+                            }
+                        </table>
                     </div>
                 </section>
             </main>

@@ -1,15 +1,15 @@
+import "./Modal.css"
+import api from "../../services/Services";
 import React, { useEffect, useState } from 'react';
 import Swal from "sweetalert2";
+
 import ImgDeletar from "../../assets/img/Excluir.svg"
-import api from "../../services/Services";
-import "./Modal.css"
 
 const Modal = (props) => {
     const [comentarios, setComentarios] = useState([]);
-
     const [novoComentario, setNovoComentario] = useState("");
 
-    const [usuarioId, setUsuarioId] = useState("2CC2DD9B-0814-4FB1-98AF-AE511A8D4E4C")
+    const [usuario, setUsuario] = useState("d3337838-0edf-4b66-8edb-3ad09928d051")
 
     function alertar(icone, mensagem) {
         const Toast = Swal.mixin({
@@ -31,26 +31,26 @@ const Modal = (props) => {
 
     async function listarComentarios() {
         try {
-            const resposta = await api.get(`ComentariosEventos/ListarSomenteExibe?id=${props.idEvento}`);
+            const resposta = await api.get(`ComentariosEventos/ListarSomenteExibe?id=${props.idEvento}`)
 
             setComentarios(resposta.data);
-
-            console.log(resposta);
-
         } catch (error) {
             console.log(error);
         }
     }
 
-    async function cadastrarComentario(comentario) {
-        try {
-            await api.post("ComentariosEventos", {
-                idUsuario: usuarioId,
-                idEvento: props.idEvento,
-                Descricao: comentario,
-            })
-        } catch (error) {
-            alertar("error", "Erro ao cadastrar comentário")
+    async function cadastrarComentario(usuarioID, comentario) {
+        if (comentario.trim() !== "") {
+            try {
+                await api.post(`ComentariosEventos`, { descricao: comentario, idUsuario: usuarioID, idEvento: props.idEvento })
+
+                alertar("success", "Cadastro realizado com sucesso");
+            } catch (error) {
+                console.log(error);
+                alertar("error", "Erro! Entre em contato com o suporte!");
+            }
+        } else {
+            alertar("warning", "Preencha o campo!");
         }
     }
 
@@ -98,7 +98,7 @@ const Modal = (props) => {
                                     placeholder="Escreva seu comentário..." />
 
                                 <button
-                                    onClick={() => cadastrarComentario(novoComentario)}
+                                    onClick={() => cadastrarComentario(usuario, novoComentario)}
                                     className="botao">
                                     cadastrar
                                 </button>

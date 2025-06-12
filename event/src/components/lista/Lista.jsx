@@ -50,7 +50,7 @@ const Lista = (props) => {
                                         <td data-cell="Descrição" className="botao_edicao" style={{display: props.visibilidade2}}>
                                             <img src={Descricao}
                                                 alt="Exclamação"
-                                                onClick={() => props.funcDescricao(item.idEvento)}
+                                                onClick={() => props.funcDescricao(item)}
                                             />
                                         </td>
                                     </tr>

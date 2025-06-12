@@ -157,25 +157,13 @@ const CadastroEvento = () => {
         }
     }
 
-    async function exibirDescricao(id) {
-        try {
-            const resposta = await api.get("eventos");
-            const listateste = resposta.data;
-
-            listateste.forEach(element => {
-                if (element.idEvento === id) {
-                    setDescricao(element.descricao);
-                }
-            });
-            Swal.fire(descricao);
-            Swal.fire({
-                title: "Descrição Evento",
-                text: descricao,
-                icon: "success"
-            });
-        } catch (error) {
-            console.log(error);
-        }
+    async function exibirDescricao(item) {
+        Swal.fire({
+            title: 'Descrição do Evento',
+            text: item.descricao || "Nenhuma descrição disponível",
+            icon: 'info',
+            confirmButtonText: 'Fechar'
+        });
     }
 
     useEffect(() => {
@@ -232,6 +220,7 @@ const CadastroEvento = () => {
 
                     funcDeletar={deletarEvento}
                     funcEditar={editarEvento}
+
                     funcDescricao={exibirDescricao}
                 />
             </main>
