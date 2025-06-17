@@ -1,35 +1,39 @@
 import "./Header.css";
-import Logo from "../../assets/img/Logo.svg";
-import Icone from "../../assets/img/Administracao.svg";
+import Logo from "../../assets/img/logo.svg"
+import Portinha from "../../assets/img/Vector.png"
 import { Link } from "react-router-dom";
-
+import Botao from "../botao/Botao";
 const Header = (props) => {
-    return (
+    return(
         <header>
-            <div className="layout_grid cabecalho">
-                <Link to="/" className="logo_header">
-                    <img src={Logo} alt="Logo do Events" />
-                </Link>
+            <link rel="stylesheet" href="https://use.typekit.net/pam4ubo.css"></link>
 
-                <nav className="nav_header">
-                    <Link href="" className="link_header" to="/Home">Home</Link>
-                    <Link href="" className="link_header" to="/Evento">Eventos</Link>
-                    <Link href="" className="link_header" to="/TipoEvento">TpEvento</Link>
-                    <Link href="" className="link_header" to="/TipoUsuario">Usuários</Link>
-                    <Link href="" className="link_header" to="/Listagem">Listagem</Link>
-                </nav>
+            <div className="layout_grid header-header">
+            <img src={Logo} alt=""/>
+            <nav className="nav_header">
+                {/* <a href="" className="link-header">Home</a>
+                <a href="" className="link-header">Eventos</a>
+                <a href="" className="link-header">Usuários</a> 
+                <a href="" className="link-header">Contatos</a>*/}
+                
+                <Link className="link-header" to="/">Home</Link>
+                <Link className="link-header" to="/Evento">Eventos</Link>
+                <Link className="link-header" to="/Tipousuario" style={{display:props.Usuario}}>Usuários</Link>
+                <Link className="link-header" to="/Tipoevento">Contatos</Link> 
 
-                <nav className="nav_img" style={{ display: props.visibilidade }}>
-                    <Link href="" className="link_header" to="/" >{props.user}</Link>
-                    <img src={Icone} alt="Icone" style={{ display: props.visibilidade }} />
-                </nav>
+                <Link to="/Login"><button className="logar" style={{display:props.botaozinho}}>Logar</button></Link>
 
-                <div className="login" style={{ display: props.botao_logar }}>
-                    <Link href="" to="/" className="logar">Logar</Link>
-                </div>
+            </nav>
+            <nav className="navas_header" style={{display:props.naver}}>
+            
+                {/* // <Link className="link-header" to="/Cadastroevento">{props.namaewa}</Link> */}
+
+                <Link className="link-header" to="/Cadastroevento">{props.nomeUsuario}</Link>
+                <img src={Portinha} alt=""/>
+                {/* <a href="" className="link-header">{props.namaewa}</a> */}
+            </nav>
             </div>
         </header>
     )
 }
-
 export default Header;
